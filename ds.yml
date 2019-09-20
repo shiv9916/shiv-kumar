@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: DaemonSet 
+metadata:
+  name: daemonset-pods 
+  labels:
+    app: kubernetes-series
+    tier: monitor
+spec:
+  selector:
+    matchLabels:
+      name: daemonset-pods
+  template:
+    metadata:
+      labels:
+        name: daemonset-pods
+    spec:
+      containers:
+        - name: daemon-container
+          image: nginx
+          env:
+          - name: command
+            value: hello
+          ports:
+          - containerPort: 80
