@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: server-replicaset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: server-replicaset
+  template:
+    metadata:
+      labels:
+        app: server-replicaset
+    spec:
+      containers:
+      - name: server-replicaset
+        image: mongo
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8081
