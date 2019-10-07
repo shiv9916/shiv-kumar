@@ -1,0 +1,17 @@
+---
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: wildfly-rs
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: wildfly-rs-pod
+    spec:
+      containers:
+      - name: wildfly
+        image: jboss/wildfly
+        ports:
+        - containerPort: 8080
